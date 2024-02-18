@@ -201,6 +201,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
 
         
         let entryCount = 0;
+        let duplicatePrevention : {[key: string]: {[key: string]: {[key: string]: boolean}}} = {};
         for(let [key, value] of Object.entries(siloAssetRates)) {
           console.log({key, value});
           let buildRateResult = [];
@@ -224,7 +225,20 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                 let minutesSinceStartupCheckpoint = new BigNumber(secondsSinceStartupCheckpoint).dividedBy(60).toNumber();
                 triggerAlert = (minutesSinceStartupCheckpoint % alertFrequency) === 0;
               }
-              if(triggerAlert) {
+              let isDuplicate = false;
+              if(duplicatePrevention?.[siloChecksumAddress]?.[tokenAddress]?.[side]) {
+                isDuplicate = true;
+              }
+              if(triggerAlert && !isDuplicate) {
+                if(!duplicatePrevention[siloChecksumAddress]) {
+                  duplicatePrevention[siloChecksumAddress] = {};
+                }
+                if(!duplicatePrevention[siloChecksumAddress][tokenAddress]) {
+                  duplicatePrevention[siloChecksumAddress][tokenAddress] = {};
+                }
+                if(!duplicatePrevention[siloChecksumAddress][tokenAddress][side]) {
+                  duplicatePrevention[siloChecksumAddress][tokenAddress][side] = true;
+                }
                 let embed = await new EmbedBuilder()
                   .setAuthor({ name: `\u200B`, iconURL: tokenSymbol ? `https://app.silo.finance/images/logos/${tokenSymbol}.png` : 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-circle.png' })
                   .addFields(
