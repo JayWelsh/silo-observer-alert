@@ -255,7 +255,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
 
         let coingeckoAddressesQuery = assetAddresses.join(',');
 
-        let tokenAddressToCoingeckoPrice = await fetchCoingeckoPrices(coingeckoAddressesQuery, deploymentConfig.network);
+        // let tokenAddressToCoingeckoPrice = await fetchCoingeckoPrices(coingeckoAddressesQuery, deploymentConfig.network);
 
         let latestBlockNumber = await getLatestBlockNumber(deploymentConfig.network);
 
