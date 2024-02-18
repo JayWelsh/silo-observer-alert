@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-<img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-observer-transparent-compressed.png" width="350" alt="silo.observer logo">
+<img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-observer-alert.png" width="350" alt="alert.silo.observer logo">
 </p>
 
 [alert](https://github.com/JayWelsh/silo-observer-alert) | [backend](https://github.com/JayWelsh/silo-observer-backend) | [frontend](https://github.com/JayWelsh/silo-observer-frontend)
