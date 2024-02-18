@@ -1,23 +1,23 @@
 {
-  "name": "silo-observer-backend",
+  "name": "silo-observer-alert",
   "version": "0.0.1",
-  "description": "Backend API for silo.observer",
+  "description": "A self-hosted, community-built (unofficial) alert system for silo.finance interest rates",
   "main": "dist/app.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "dev": "tsc-watch --onSuccess \"nodemon -q dist/src/app.js\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JayWelsh/silo-observer-backend.git"
+    "url": "git+https://github.com/JayWelsh/silo-observer-alert.git"
   },
   "author": "Jay Welsh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JayWelsh/silo-observer-backend/issues"
+    "url": "https://github.com/JayWelsh/silo-observer-alert/issues"
   },
-  "homepage": "https://github.com/JayWelsh/silo-observer-backend#readme",
+  "homepage": "https://github.com/JayWelsh/silo-observer-alert#readme",
   "dependencies": {
     "@types/cors": "^2.8.13",
     "@types/cron": "^2.0.0",
