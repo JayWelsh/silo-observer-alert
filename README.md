@@ -94,7 +94,7 @@ Arbitrum Mainnet Config:
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-3-3.png" width="100%" alt="fork">
 </p>
 
-Congratulations, you've created your Alchemy Apps which our alerting service will use to query the Ethereum & Arbitrum blockchains for data.
+Congratulations, you've created what we need for our alerting service to query the Ethereum & Arbitrum blockchains for data.
 
 ### Step 4 (Discord Bot Creation):
 
