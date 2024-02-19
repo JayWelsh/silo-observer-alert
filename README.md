@@ -326,6 +326,12 @@ That's it! If everything went according to plan and all steps were correctly fol
 
 Updates and upgrades to this project can be deployed to your instance by merging the `main` branch of [this repo](https://github.com/JayWelsh/silo-observer-alert) into the `main` branch of your fork. If you followed the deployment steps above or have used a similar methodology to the above, any changes that you merge into your fork will automatically be deployed.
 
+If you run into any trouble or have questions, please consult the Questions / Support section at the bottom of this document.
+
+<p align="center">
+  <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/sync-fork.png" width="100%" alt="fork">
+</p>
+
 ## Questions / Support
 
 If you have any questions or need any help, please feel free to join the [silo.observer Discord server](https://discord.gg/aUpKaCEy), or alternatively ping @JayWelsh on the silo.finance Discord server.
