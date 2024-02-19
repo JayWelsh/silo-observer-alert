@@ -11,17 +11,15 @@ A self-hosted, community-built (unofficial) alert system for [silo.finance](http
 
 ### Preface
 
-Decentralized lending protocols present unique challenges for alerting systems, especially when managing high-stakes positions vulnerable to liquidation. Traditional alert service providers often face the risk of user dissatisfaction due to potential downtime or alert delivery failures. This can discourage providers from offering such services, given the possible backlash in case of issues like downtime or alert failures.
+Decentralized lending protocols present unique challenges for alerting systems, especially when managing high-stakes positions vulnerable to liquidation. In cases of downtime / alert failures where liquidations are involved, traditional alert service providers may feel/face some perceived role of responsibility/culpability. This may deter would-be alert providers from offering such services.
 
-To address this, our project focuses on enabling users to easily set up and run their own alerting service. By self-hosting, users maintain control and responsibility, avoiding reliance on third-party alert services.
+To address this, our project focuses on a "run it yourself" approach, below is a guide to set up and run your own alerting service for silo.finance. By self-hosting, you maintain control and responsibility, reducing reliance on third-party alerting services.
 
-We advocate for a robust alerting strategy in the decentralized lending space. A healthy setup should include multiple, independent alerting systems running in parallel. This approach ensures that a single point of failure won't compromise the user's position. Users can, for instance, run their instance of this codebase while also subscribing to third-party alert services.
-
-Please note, this codebase is continually evolving and may contain bugs. It is not intended to be a standalone, mission-critical service. Instead, it should be part of a broader, redundant alerting framework to enhance reliability and safety.
+This codebase is continually evolving and may contain bugs. It is not intended to be a standalone, mission-critical service. Instead, it should be part of a broader, redundant alerting framework to enhance reliability. This project advocates for a robust alerting strategy in the DeFi space. A healthy setup should include multiple, independently-developed alerting systems running in parallel.
 
 ### 15-minute setup
 
-This project has been built specifically to be as easy to self-host as possible. No technical knowledge is required. Assuming a user has an account on all of the service providers outlined in the tutorial, one can get set up under 15 minutes (else a few more minutes will need to be spent on signing up for the required services).
+This project has been built specifically to be as easy to self-host as possible. No technical knowledge is required. Assuming a user has an account on all of the service providers outlined in the tutorial, one can get set up in under 15 minutes (else a few more minutes will need to be spent on signing up for the required services).
 
 ### Costs (~ $5 per month)
 
