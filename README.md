@@ -118,7 +118,13 @@ You will now open up a line of communication with your bot. Due to how Discord w
 
 If you don't already own a Discord server, just quickly create one (click "add a server" / the "+" icon at the bottom of your list of Discord servers).
 
-Once you have your own server, copy the "Application ID" of your bot:
+Once you have your own Discord server, navigate to the [applications section of the Discord Developer Portal](https://discord.com/developers/applications) and select the application which you have created.
+
+<p align="center">
+  <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-4-2-5.png" width="100%" alt="fork">
+</p>
+
+Once your application is selected, copy the "Application ID" of your bot:
 
 <p align="center">
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-4-3.png" width="100%" alt="fork">
