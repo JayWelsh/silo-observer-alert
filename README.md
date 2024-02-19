@@ -72,6 +72,8 @@ Congratulations, you will now have this repo forked onto your own account, the n
 
 ### Step 3 (Alchemy Keys):
 
+Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps).
+
 We need to create an "app" for Ethereum Mainnet & Arbitrum Mainnet. If you have just signed up for Alchemy, there is a good chance that an "app" for Ethereum Mainnet has already been created, in which case we only need to add the Arbitrum app.
 
 If you don't have an Ethereum Mainnet and an Arbitrum Mainnet app, create what's missing:
@@ -169,7 +171,7 @@ Now we just need to fill in the values, I will explain where each value can be f
 
 #### ALCHEMY_API_KEY_ETHEREUM
 
-Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps) and copy the API Key for your Ethereum Mainnet app, add this value to the quotes for `ALCHEMY_API_KEY_ETHEREUM` (e.g. `ALCHEMY_API_KEY_ETHEREUM="YOUR ETHEREUM API KEY"`)
+Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps) and copy the API Key for your Ethereum Mainnet app, add this value to the quotes for `ALCHEMY_API_KEY_ETHEREUM` (e.g. `ALCHEMY_API_KEY_ETHEREUM="YOUR ETHEREUM API KEY"`):
 
 <p align="center">
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-5-1.png" width="100%" alt="fork">
@@ -181,7 +183,7 @@ Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps) a
 
 #### ALCHEMY_API_KEY_ARBITRUM
 
-Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps) and copy the API Key for your Arbitrum Mainnet app, add this value to the quotes for `ALCHEMY_API_KEY_ARBITRUM` (e.g. `ALCHEMY_API_KEY_ARBITRUM="YOUR ARBITRUM API KEY"`)
+Navigate to your [applications on Alchemy](https://dashboard.alchemy.com/apps) and copy the API Key for your Arbitrum Mainnet app, add this value to the quotes for `ALCHEMY_API_KEY_ARBITRUM` (e.g. `ALCHEMY_API_KEY_ARBITRUM="YOUR ARBITRUM API KEY"`):
 
 <p align="center">
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-5-2.png" width="100%" alt="fork">
