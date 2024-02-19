@@ -7,7 +7,25 @@
 # alert.silo.observer
 
 ### About
-A self-hosted, community-built (unofficial) alert system for [silo.finance](https://silo.finance) interest rates 
+A self-hosted, community-built (unofficial) alert system for [silo.finance](https://silo.finance) interest rates
+
+### Contents
+
+- [alert.silo.observer](#alertsiloobserver)
+    + [About](#about)
+    + [Contents](#contents)
+    + [Preface](#preface)
+    + [15-minute setup](#15-minute-setup)
+    + [Costs (~ $5 per month)](#costs-----5-per-month-)
+    + [Tutorial](#tutorial)
+      + [Step 1 (Account Creation):](#step-1--account-creation--)
+      + [Step 2 (Project Forking):](#step-2--project-forking--)
+      + [Step 3 (Alchemy Keys):](#step-3--alchemy-keys--)
+      + [Step 4 (Discord Bot Creation):](#step-4--discord-bot-creation--)
+      + [Step 5 (Environment Variables):](#step-5--environment-variables--)
+      + [Step 6 (Deployment):](#step-6--deployment--)
+  * [Updates / Upgrades](#updates--upgrades)
+  * [Questions / Support](#questions--support)
 
 ### Preface
 
