@@ -243,10 +243,10 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                   .setAuthor({ name: `\u200B`, iconURL: tokenSymbol ? `https://app.silo.finance/images/logos/${tokenSymbol}.png` : 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-circle.png' })
                   .addFields(
                     [
-                      { name: `${side} Rate:`, value: `*${formatPercentage(rate)} APY*` }
+                      { name: `${tokenSymbol} ${side} Rate:`, value: `*${formatPercentage(rate)} APY*` }
                     ]
                   )
-                  .setTitle(`${rateClassification} rates on ${tokenSymbol}`)
+                  .setTitle(`${rateClassification.replace("_", " ")} rates on ${tokenSymbol} (${side})`)
                   .setURL(`https://app.silo.finance/silo/${siloChecksumAddress}`)
                   .setFooter({ text: `alert.silo.observer`, iconURL: 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-observer-tiny.png' })
                 embeds.push(embed);

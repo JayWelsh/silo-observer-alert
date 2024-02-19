@@ -48,13 +48,13 @@ export const NETWORK_TO_SUBGRAPH : {[key: string]: string} = {
 }
 
 // Web3
-export const ALCHEMY_API_KEY = process.env['ALCHEMY_API_KEY'];
+export const ALCHEMY_API_KEY_ETHEREUM = process.env['ALCHEMY_API_KEY_ETHEREUM'];
 export const ALCHEMY_API_KEY_ARBITRUM = process.env['ALCHEMY_API_KEY_ARBITRUM'];
-export const ALCHEMY_ENDPOINT = `https://eth-mainnet.g.alchemy.com/v2/${process.env['ALCHEMY_API_KEY']}`;
+export const ALCHEMY_ENDPOINT = `https://eth-mainnet.g.alchemy.com/v2/${process.env['ALCHEMY_API_KEY_ETHEREUM']}`;
 export const START_BLOCK = 15307294;
 
 export const NETWORK_TO_ALCHEMY_ENDPOINT: {[key: string]: string} = {
-  "ethereum": `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+  "ethereum": `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY_ETHEREUM}`,
   "arbitrum": `https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY_ARBITRUM}`,
 }
 
