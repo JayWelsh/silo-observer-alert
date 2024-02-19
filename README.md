@@ -21,7 +21,7 @@ Please note, this codebase is continually evolving and may contain bugs. It is n
 
 ### 15-minute setup
 
-This project has been built specifically to be as easy to self-host as possible. No technical knowledge is required. Assuming a user has an account on all of the service providers outlined in the tutorial, one can get set up under 15 minutes (else there will need to a few more minutes spent on signing up for the required services).
+This project has been built specifically to be as easy to self-host as possible. No technical knowledge is required. Assuming a user has an account on all of the service providers outlined in the tutorial, one can get set up under 15 minutes (else a few more minutes will need to be spent on signing up for the required services).
 
 ### Costs (~ $5 per month)
 
