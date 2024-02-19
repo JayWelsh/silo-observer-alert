@@ -228,7 +228,7 @@ Copy the whole value into the quotes for `DISCORD_BOT_CLIENT_ID` (e.g. `DISCORD_
 This represents the Discord User ID of your own Discord Account, this is the user that our alert bot will try to inform of any alerts. You can place multiple values into this field, just separate them using ";". Make sure you have messaged the bot as we did at the end of Step 4 from each Discord account in order to ensure that the bot has permission to DM you.
 
 <p align="center">
-  <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-5-7.png" width="100%" alt="fork">
+  <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-5-7-2.png" width="100%" alt="fork">
 </p>
 
 Copy the whole value into the quotes for `DISCORD_USER_ID_LIST` (e.g. `DISCORD_USER_ID_LIST="YOUR DISCORD USER ID"` or `DISCORD_USER_ID_LIST="YOUR DISCORD USER ID;SOME OTHER DISCORD ID"`).
