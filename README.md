@@ -68,7 +68,7 @@ Select your username from the "Owner" dropdown, you can leave the rest as defaul
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-2-2.png" width="100%" alt="fork">
 </p>
 
-Congratulations, you will now have this repo forked onto your own account, the new repo URL will look something like this: `https://github.com/<YOUR_GITHUB_USERNAME>/silo-observer-alert`.
+Congratulations, you will now have this repo forked onto your own account, the new repo URL will look something like this: `https://github.com/YOUR_GITHUB_USERNAME/silo-observer-alert`.
 
 ### Step 3 (Alchemy Keys):
 
