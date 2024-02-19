@@ -7,7 +7,7 @@
 # alert.silo.observer
 
 ### About
-A self-hosted, community-built (unofficial) alert system for [silo.finance](https://silo.finance) interest rates
+A self-hosted, community-built (unofficial) alert system for [silo.finance](https://silo.finance) interest rates.
 
 ### Contents
 
@@ -98,7 +98,7 @@ Congratulations, you've created your Alchemy Apps which our alerting service wil
 
 Navigate to the applications section of [Discord's Developer Portal](https://discord.com/developers/applications).
 
-Click "New Application"
+Click "New Application":
 
 <p align="center">
   <img src="https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/step-4-1.png" width="100%" alt="fork">
@@ -230,8 +230,6 @@ Copy the whole value into the quotes for `DISCORD_USER_ID_LIST` (e.g. `DISCORD_U
 This represents the Ethereum/Arbitrum accounts that we want the alert bot to keep an eye on the interest rates of, here you will place your wallet addresses so that the alert bot knows which silos it should be alerting you about. You can place multiple values into this field, just separate them using ";".
 
 e.g. `ACCOUNT_WATCHLIST="0x0000000000000000000000000000000000000001"` or `ACCOUNT_WATCHLIST="0x0000000000000000000000000000000000000001;0x0000000000000000000000000000000000000002"`
-
-#### Conclusion of Step 5:
 
 You should now have values for all of your required fields in a text editor:
 
