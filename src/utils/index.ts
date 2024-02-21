@@ -139,6 +139,37 @@ const findRateClassification = (rateImpactClassifications: RateImpactClassificat
   return sortedClassifications[sortedClassifications.length - 1][0]; // Return highest classification if percentage is above all others
 }
 
+const getUserLocalDateTime = (utcOffset: number) => {
+  // Get the current UTC date and time
+  const nowUtc = new Date();
+
+  // Convert the UTC offset to milliseconds
+  const offsetMs = utcOffset * 60 * 60 * 1000;
+
+  // Apply the offset to the current UTC time
+  const userDateTime = new Date(nowUtc.getTime() + offsetMs);
+
+  // Return the adjusted date and time
+  return userDateTime;
+}
+
+const isItSpecificTimeInUsersLocalTimezone = (unixTimestamp: number, utcOffset: number, specificTime: string) => {
+  // Create a Date object from the Unix timestamp
+  const dateTime = new Date(unixTimestamp * 1000);
+
+  // Convert the UTC offset to milliseconds
+  const offsetMs = utcOffset * 60 * 60 * 1000;
+
+  // Adjust the date and time to the user's local time
+  const userLocalTime = new Date(dateTime.getTime() + offsetMs);
+
+  // Format the user's local time to extract only the time part
+  const userLocalTimeString = userLocalTime.toISOString().split('T')[1].substr(0, 8);
+
+  // Compare the user's local time with the specific time
+  return userLocalTimeString === specificTime;
+}
+
 export {
   sleep,
   srcPath,
@@ -148,4 +179,6 @@ export {
   formatDecimal,
   subgraphRequestWithRetry,
   findRateClassification,
+  getUserLocalDateTime,
+  isItSpecificTimeInUsersLocalTimezone,
 }

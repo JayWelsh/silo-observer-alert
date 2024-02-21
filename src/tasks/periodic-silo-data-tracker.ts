@@ -8,6 +8,7 @@ import { Client, EmbedBuilder } from 'discord.js';
 import {
   sleep,
   findRateClassification,
+  isItSpecificTimeInUsersLocalTimezone,
 } from '../utils';
 
 BigNumber.config({ EXPONENTIAL_AT: [-1e+9, 1e+9] });
@@ -46,6 +47,7 @@ import {
 } from '../web3/jobs';
 
 import e from 'express';
+import { alertConfig } from '../../alertConfig';
 
 const siloQuery =  `{
   markets {
@@ -166,7 +168,17 @@ const fetchCoingeckoPrices = async (assetAddressesQueryString : string, network:
 const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: number, discordClient: Client | undefined) => {
 
   let useTimestampPostgres = new Date(useTimestampUnix * 1000).toISOString();
-  let isHourlyMoment = (useTimestampUnix % 3600) === 0;
+  let isMorningReport = isItSpecificTimeInUsersLocalTimezone(useTimestampUnix, alertConfig.TIMEZONE_UTC_OFFSET, alertConfig.MORNING_REPORT_TIME);
+  
+  if(isMorningReport && discordClient) {
+    for(let discordUserID of DISCORD_USER_ID_LIST) {
+      discordClient.users.fetch(discordUserID).then((user: any) => {
+        user.send(`Morning Report! | ${new Date(useTimestampUnix * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
+      });
+    }
+  }
+
+  console.log({isMorningReport});
 
   for(let deploymentConfig of DEPLOYMENT_CONFIGS) {
 
@@ -223,7 +235,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                 alertFrequency = ALERT_CONFIG.ALERT_FREQUENCY_BY_RATE[rateClassification];
                 let secondsSinceStartupCheckpoint = new BigNumber(useTimestampUnix).minus(ALERT_CONFIG.STARTUP_CHECKPOINT).toNumber();
                 let minutesSinceStartupCheckpoint = new BigNumber(secondsSinceStartupCheckpoint).dividedBy(60).toNumber();
-                triggerAlert = (minutesSinceStartupCheckpoint % alertFrequency) === 0;
+                triggerAlert = ((minutesSinceStartupCheckpoint % alertFrequency) === 0) || isMorningReport;
               }
               let isDuplicate = false;
               if(duplicatePrevention?.[siloChecksumAddress]?.[tokenAddress]?.[side]) {
@@ -243,7 +255,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                   .setAuthor({ name: `\u200B`, iconURL: tokenSymbol ? `https://app.silo.finance/images/logos/${tokenSymbol}.png` : 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-circle.png' })
                   .addFields(
                     [
-                      { name: `${tokenSymbol} ${side} Rate:`, value: `*${formatPercentage(rate)} APY*` }
+                      { name: `${tokenSymbol} ${side} Rate:`, value: `*${formatPercentage(rate)} APR*` }
                     ]
                   )
                   .setTitle(`${rateClassification.replace("_", " ")} rates on ${tokenSymbol} (${side})`)

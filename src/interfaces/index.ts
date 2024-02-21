@@ -188,10 +188,11 @@ export interface IAlertConfig {
   ADDRESS_WATCHLIST: `0x${string}`[]
   RATE_IMPACT_CLASSIFICATIONS: {[key: string]: number}
   MINIMUM_RATE_IMPACT_ALERT_REQUIREMENT: string
-  GOOD_MORNING_TIME: string
+  MORNING_REPORT_TIME: string
   SKIP_GOOD_MORNING_PING: boolean
   ALERT_FREQUENCY_BY_RATE: {[key: string]: number}
   ADDITIONAL_PING_TIMES: string[]
   SKIP_STARTUP_PING: boolean
   STARTUP_CHECKPOINT: number
+  TIMEZONE_UTC_OFFSET: number
 }

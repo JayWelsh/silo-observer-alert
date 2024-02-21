@@ -15,9 +15,14 @@ import {
 
 import routes from "./routes";
 
+import {
+  getUserLocalDateTime,
+} from './utils'
+
 import registerBotCommands from './tasks/register-bot-commands';
 import botLoginAndReadyUp from './tasks/bot-login-and-ready-up';
 import { periodicSiloDataTracker } from './tasks/periodic-silo-data-tracker';
+import { alertConfig } from "../alertConfig";
 
 // minutely cycle to run indexer, 10 = 10 minutes (i.e. 10, 20, 30, 40, 50, 60 past the hour).
 // recommend to use 10 if doing a full sync, once up to speed, 3 minutes should be safe.
@@ -93,8 +98,6 @@ runSync.start();
     }
     let startTimeSiloDataTracker = new Date().getTime();
     let useTimestampUnixSiloDataTracker = Math.floor(new Date().setSeconds(0) / 1000);
-    console.log("Running SiloDataTracker", new Date(useTimestampUnixSiloDataTracker * 1000));
-    await periodicSiloDataTracker(useTimestampUnixSiloDataTracker, startTimeSiloDataTracker, discordClient);
-    console.log(`Finished in ${(new Date().getTime() - startTimeSiloDataTracker) / 1000} seconds`);
+    console.log("Running SiloDataTracker", getUserLocalDateTime(alertConfig.TIMEZONE_UTC_OFFSET));
   }
 })();

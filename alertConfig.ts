@@ -14,7 +14,8 @@ export const alertConfig : IAlertConfig = {
     LOW: 1,
   },
   MINIMUM_RATE_IMPACT_ALERT_REQUIREMENT: "MEDIUM",
-  GOOD_MORNING_TIME: "09:00:00+02:00",
+  TIMEZONE_UTC_OFFSET: 2,
+  MORNING_REPORT_TIME: "09:00:00",
   ALERT_FREQUENCY_BY_RATE: {
     CRITICAL: 1,
     SEVERE: 5,
@@ -44,7 +45,7 @@ export const alertConfig : IAlertConfig = {
 //     LOW: 1,
 //   },
 //   MINIMUM_RATE_IMPACT_ALERT_REQUIREMENT: "MEDIUM",
-//   GOOD_MORNING_TIME: "09:00:00+02:00",
+//   MORNING_REPORT_TIME: "09:00:00+02:00",
 //   ALERT_FREQUENCY_BY_RATE: {
 //     // 1 = every minute
 //     // 5 = every 5th minute
