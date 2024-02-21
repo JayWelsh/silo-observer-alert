@@ -88,16 +88,14 @@ const runSync = new CronJob(
 runSync.start();
 
 (async () => {
+  console.log("Running SiloDataTracker", getUserLocalDateTime(new Date().getTime() / 1000, alertConfig.TIMEZONE_UTC_OFFSET));
   if(!ALERT_CONFIG.SKIP_STARTUP_PING) {
     if(discordClient) {
       for(let discordUserID of DISCORD_USER_ID_LIST) {
         discordClient.users.fetch(discordUserID).then((user: any) => {
-          user.send(`Service started! | ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
+          user.send(`Service started! | ${getUserLocalDateTime(new Date().getTime() / 1000, alertConfig.TIMEZONE_UTC_OFFSET).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
         });
       }
     }
-    let startTimeSiloDataTracker = new Date().getTime();
-    let useTimestampUnixSiloDataTracker = Math.floor(new Date().setSeconds(0) / 1000);
-    console.log("Running SiloDataTracker", getUserLocalDateTime(alertConfig.TIMEZONE_UTC_OFFSET));
   }
 })();

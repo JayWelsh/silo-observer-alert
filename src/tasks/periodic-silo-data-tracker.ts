@@ -46,6 +46,10 @@ import {
   getAllOpenPositionSilos,
 } from '../web3/jobs';
 
+import {
+  getUserLocalDateTime,
+} from '../utils';
+
 import e from 'express';
 import { alertConfig } from '../../alertConfig';
 
@@ -173,7 +177,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
   if(isMorningReport && discordClient) {
     for(let discordUserID of DISCORD_USER_ID_LIST) {
       discordClient.users.fetch(discordUserID).then((user: any) => {
-        user.send(`Morning Report! | ${new Date(useTimestampUnix * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
+        user.send(`Morning Report! | ${getUserLocalDateTime(useTimestampUnix, alertConfig.TIMEZONE_UTC_OFFSET).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
       });
     }
   }
