@@ -65,6 +65,7 @@ export const getAllSiloAssets = async (deploymentConfig: IDeployment, siloAddres
   let siloAssetBalances : IAllSiloAssetBalanceResults = {}
   let siloAddressToSiloAssets : {[key: string]: string[]} = {};
   let siloAssetAddressToSymbol : {[key: string]: string} = {};
+  let siloAddressToSiloName : {[key: string]: string} = {};
 
   let finalResult = {
     success: true,
@@ -74,6 +75,7 @@ export const getAllSiloAssets = async (deploymentConfig: IDeployment, siloAddres
     assetAddresses: assetAddresses,
     siloAddressToSiloAssets: siloAddressToSiloAssets,
     siloAssetAddressToSymbol: siloAssetAddressToSymbol,
+    siloAddressToSiloName: siloAddressToSiloName,
   }
 
   let isTripwire = false;
@@ -97,22 +99,6 @@ export const getAllSiloAssets = async (deploymentConfig: IDeployment, siloAddres
         });
 
         const [...allSiloAssetsWithState] = await multicallProviderRetryOnFailure(siloContracts.map(contract => contract.getAssets()), 'all silos with state', deploymentConfig.network);
-        
-        let siloIndex = 0;
-        let queryIndexToSiloAddress : string[] = [];
-        for(let singleSiloAssetsWithState of allSiloAssetsWithState) {
-          let siloAddress = indexedSiloAddresses[siloIndex];
-          if(!finalResult.siloAddressToSiloAssets[siloAddress]) {
-            finalResult.siloAddressToSiloAssets[siloAddress] = singleSiloAssetsWithState;
-          }
-          for(let singleSiloAsset of singleSiloAssetsWithState) {
-            queryIndexToSiloAddress.push(siloAddress);
-            if(assetAddresses.indexOf(singleSiloAsset) === -1) {
-              assetAddresses.push(singleSiloAsset);
-            }
-          }
-          siloIndex++;
-        }
 
         console.log({'allSiloAssetsWithState.flat()': allSiloAssetsWithState.flat()})
         let tokenAddresses : string[] = Array.from(new Set(allSiloAssetsWithState.flat()));
@@ -135,11 +121,33 @@ export const getAllSiloAssets = async (deploymentConfig: IDeployment, siloAddres
           }
         }
 
+        let siloIndex = 0;
+        let queryIndexToSiloAddress : string[] = [];
+        for(let singleSiloAssetsWithState of allSiloAssetsWithState) {
+          let siloAddress = indexedSiloAddresses[siloIndex];
+          if(!finalResult.siloAddressToSiloAssets[siloAddress]) {
+            finalResult.siloAddressToSiloAssets[siloAddress] = singleSiloAssetsWithState;
+          }
+          for(let singleSiloAsset of singleSiloAssetsWithState) {
+            queryIndexToSiloAddress.push(siloAddress);
+            if(assetAddresses.indexOf(singleSiloAsset) === -1) {
+              assetAddresses.push(singleSiloAsset);
+            }
+            if(!siloAddressToSiloName[siloAddress]) {
+              siloAddressToSiloName[siloAddress] = finalResult.siloAssetAddressToSymbol[singleSiloAsset];
+            } else if(siloAddressToSiloName[siloAddress].indexOf(finalResult.siloAssetAddressToSymbol[singleSiloAsset]) === -1) {
+              siloAddressToSiloName[siloAddress] += `-${finalResult.siloAssetAddressToSymbol[singleSiloAsset]}`
+            }
+          }
+          siloIndex++;
+        }
+        
         if(allSiloAssetsWithState.length === 0 || siloAddresses.length === 0 || assetAddresses.length === 0) {
           finalResult.success = false;
         }
         finalResult.allSiloAssetsWithState = [...finalResult.allSiloAssetsWithState, ...allSiloAssetsWithState];
         finalResult.assetAddresses = [...finalResult.assetAddresses, ...assetAddresses];
+        finalResult.siloAddressToSiloName = siloAddressToSiloName;
         
 
       }

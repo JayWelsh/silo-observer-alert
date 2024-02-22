@@ -203,6 +203,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
         assetAddresses,
         siloAddressToSiloAssets,
         siloAssetAddressToSymbol,
+        siloAddressToSiloName,
       } = await getAllSiloAssets(deploymentConfig, allSiloAddressesWithOpenPositions);
 
       if(success && (allSiloAddressesWithOpenPositions?.length > 0)) {
@@ -255,6 +256,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                 if(!duplicatePrevention[siloChecksumAddress][tokenAddress][side]) {
                   duplicatePrevention[siloChecksumAddress][tokenAddress][side] = true;
                 }
+                let siloName = siloAddressToSiloName[siloChecksumAddress];
                 let embed = await new EmbedBuilder()
                   .setAuthor({ name: `\u200B`, iconURL: tokenSymbol ? `https://app.silo.finance/images/logos/${tokenSymbol}.png` : 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-circle.png' })
                   .addFields(
@@ -262,7 +264,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                       { name: `${tokenSymbol} ${side} Rate:`, value: `*${formatPercentage(rate)} APR*` }
                     ]
                   )
-                  .setTitle(`${rateClassification.replace("_", " ")} rates on ${tokenSymbol} (${side})`)
+                  .setTitle(`${rateClassification.replace("_", " ")} rates on ${tokenSymbol} (${side}) of ${siloName ? siloName : '[unknown]'} silo`)
                   .setURL(`https://app.silo.finance/silo/${siloChecksumAddress}`)
                   .setFooter({ text: `alert.silo.observer`, iconURL: 'https://vagabond-public-storage.s3.eu-west-2.amazonaws.com/silo-observer-tiny.png' })
                 embeds.push(embed);
