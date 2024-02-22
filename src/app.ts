@@ -11,6 +11,7 @@ import {
 	NETWORK_TO_ALCHEMY_ENDPOINT,
   DISCORD_USER_ID_LIST,
   ALERT_CONFIG,
+  ACCOUNT_WATCHLIST,
 } from "./constants"
 
 import routes from "./routes";
@@ -48,6 +49,8 @@ app.listen(port);
 
 console.log(`----- ⚡ SERVER LISTENING ⚡ -----`);
 console.log(`-------- ⚡ PORT: ${port} ⚡ --------`);
+
+console.log({ACCOUNT_WATCHLIST})
 
 registerBotCommands();
 let discordClient = botLoginAndReadyUp();

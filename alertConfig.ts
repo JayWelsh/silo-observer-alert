@@ -29,7 +29,7 @@ export const alertConfig : IAlertConfig = {
   ADDITIONAL_PING_TIMES: [],
   SKIP_GOOD_MORNING_PING: false,
   SKIP_STARTUP_PING: false,
-  STARTUP_CHECKPOINT: Math.floor(new Date().setSeconds(0) / 1000),
+  STARTUP_CHECKPOINT: Math.floor(new Date().setSeconds(0) / 1000) + 60, // set starting point to the next minute so that the first run gives reports
 }
 
 // export const alertConfig : IAlertConfig = {
