@@ -176,6 +176,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
   
   if(isMorningReport && discordClient) {
     for(let discordUserID of DISCORD_USER_ID_LIST) {
+      console.log("Attempting to send Morning Report Discord Message to: ", discordUserID);
       discordClient.users.fetch(discordUserID).then((user: any) => {
         user.send(`Morning Report! | ${getUserLocalDateTime(useTimestampUnix, alertConfig.TIMEZONE_UTC_OFFSET).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}`);
       });
@@ -273,6 +274,7 @@ const periodicSiloDataTracker = async (useTimestampUnix: number, startTime: numb
                 if(discordClient) {
                   if(embeds?.length > 0) {
                     for(let discordUserID of DISCORD_USER_ID_LIST) {
+                      console.log("Attempting to send Alert Discord Message to: ", discordUserID);
                       discordClient.users.fetch(discordUserID).then((user: any) => {
                         user.send({embeds: embeds});
                       });
